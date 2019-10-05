@@ -18,4 +18,7 @@ class DataPembelian extends Model
         'kode_mata_uang',
         'harga_beli',
    	];
+    public function getMataUang(){
+        return $this->hasOne("App/Model/MataUang","id","id_mata_uang");
+    }
 }

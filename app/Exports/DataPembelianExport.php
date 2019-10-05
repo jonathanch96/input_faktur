@@ -27,7 +27,7 @@ class DataPembelianExport implements FromCollection,WithStrictNullComparison
     		array_push($header2, \PhpOffice\PhpSpreadsheet\Shared\Date::PHPToExcel(date_create($dp->tgl_pib)));
             array_push($header2, "");
             array_push($header3, "Qty");
-    		array_push($header3, "Harga");
+    		array_push($header3, "Harga (".$dp->getMataUang->kode_mata_uang.")");
     	}
 
     	array_push($data_excel, $header1);
