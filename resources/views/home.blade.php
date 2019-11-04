@@ -37,6 +37,46 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="exportModal" role="dialog" aria-labelledby="exportModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form method="post" action="{{url('export_data')}}">
+            {{ csrf_field() }}
+            <input type="hidden" class="form-control" id="pembelian_id" name="pembelian_id">
+
+          <div class="modal-header text-center">
+            <h4 class="modal-title w-100 font-weight-bold">Export Data</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body mx-3">
+            <div class="form-group">
+                <label for="item_name">Tahun</label>
+                <select  style="width: 435px" class="js-example-basic-single" name="year">
+                  <?php for ($i=2015; $i < 2020; $i++) { ?>
+                    <option value="{{$i}}">{{$i}}</option>
+
+                  <?php } ?>
+                
+                </select>
+              </div>
+              <p>This Process Might take a few minutes, Do you want to continue?</p>
+               
+          </div>
+          
+
+          
+          <div class="modal-footer d-flex justify-content-center">
+            <button class="btn btn-primary" type="button" data-dismiss="modal"  style="background-color: black;">Cancel</button>
+
+            <button class="btn btn-primary"  style="background-color: red;">Start</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="insertModal"  role="dialog" aria-labelledby="insertModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -213,7 +253,7 @@
         $("#myTable").show();
         $("#loding-container").hide();
         if(run==false){
-          $(".fixed-table-toolbar").append("<div class='float-left btn-group search'><button style='background-color:#000000;margin-right:10px;' data-toggle='modal' data-target='#insertModal' data-btnsrc='add' data-title='Input New Data Pembelian' data-link='{{url('add_new_data_pembelian')}}' class='btn btn-primary'>Add New Data</button></div><div class='float-left btn-group search'><button style='background-color:#000000;' onclick=' redirectExportData()' class='btn btn-primary'>Export Data</button></div>");
+          $(".fixed-table-toolbar").append("<div class='float-left btn-group search'><button style='background-color:#000000;margin-right:10px;' data-toggle='modal' data-target='#insertModal' data-btnsrc='add' data-title='Input New Data Pembelian' data-link='{{url('add_new_data_pembelian')}}' class='btn btn-primary'>Add New Data</button></div><div class='float-left btn-group search'><button style='background-color:#000000;' data-toggle='modal' data-target='#exportModal' class='btn btn-primary'>Export Data</button></div>");
           run=true;
         }
          $('.js-example-basic-single').select2();

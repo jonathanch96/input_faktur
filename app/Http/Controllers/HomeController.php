@@ -74,8 +74,8 @@ class HomeController extends Controller
         ]);
         return redirect(url('home'))->with('status','Berhasil Menambah Data Item '.$request->item_name)->withInput(Input::except(['nama_barang','qty','kode_mata_uang','harga_beli']));;
     }
-    public function doExportData(){
-        return Excel::download(new DataPembelianExport, date("Y-m(M)-d H:i")."_Data_pembelian".'.xlsx');
+    public function doExportData(Request $request){
+        return Excel::download(new DataPembelianExport($request->year), date("Y-m(M)-d H:i")."_Data_pembelian".'.xlsx');
         
     }
     public function doEditDataPembelian(Request $request,$id){

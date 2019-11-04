@@ -13,10 +13,16 @@ class DataPembelianExport implements FromCollection,WithStrictNullComparison
     /**
     * @return \Illuminate\Support\Collection
     */
+    protected $year;
+
+     function __construct($year) {
+            $this->year = $year;
+     }
+
     public function collection()
     {
     	$data_inventory = Inventory::all();
-    	$data_pembelian = DataPembelian::orderby('tgl_pib','ASC')->groupBy("no_pib")->get();
+    	$data_pembelian = DataPembelian::whereYear("tgl_pib",$this->year)->orderby('tgl_pib','ASC')->groupBy("no_pib")->get();
     	$data_excel=array();
     	$header1=array("");
     	$header2=array("");

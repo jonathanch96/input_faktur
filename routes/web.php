@@ -21,4 +21,4 @@ Route::post('/add_new_item', 'InventoryController@doAddNewItem');
 Route::post('/add_new_data_pembelian', 'HomeController@doAddNewDataPembelian');
 Route::post('/edit_data_pembelian/{id}', 'HomeController@doEditDataPembelian');
 Route::post('/delete_data_pembelian', 'HomeController@doDeleteDataPembelian');
-Route::get('/export_data', 'HomeController@doExportData');
+Route::post('/export_data', 'HomeController@doExportData');
